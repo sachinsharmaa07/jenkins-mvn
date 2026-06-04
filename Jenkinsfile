@@ -8,16 +8,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-
-            steps {
-
-                git 'https://github.com/sachinsharmaa07/jenkins-mvn.git'
-
-            }
-
-        }
-
         stage('Compile') {
 
             steps {
