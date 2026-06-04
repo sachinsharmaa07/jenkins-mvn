@@ -12,7 +12,7 @@ pipeline {
 
             steps {
 
-                git 'https://github.com/yourusername/jenkins-demo.git'
+                git 'https://github.com/sachinsharmaa07/jenkins-mvn.git'
 
             }
 
