@@ -8,6 +8,33 @@ pipeline {
 
     stages {
 
+        stage('Checkout') {
+
+            steps {
+
+                git branch: 'main',
+                    url: 'https://github.com/sachinsharmaa07/jenkins-mvn.git'
+
+            }
+
+        }
+
+        stage('Check Docker') {
+
+            steps {
+
+                sh '''
+                echo "PATH:"
+                echo $PATH
+
+                which docker || true
+
+                docker --version || true
+                '''
+            }
+
+        }
+
         stage('Compile') {
 
             steps {
@@ -33,26 +60,6 @@ pipeline {
             steps {
 
                 sh 'mvn package'
-
-            }
-
-        }
-
-        stage('Build Docker Image') {
-
-            steps {
-
-                sh 'docker build -t myapp .'
-
-            }
-
-        }
-
-        stage('Run Container') {
-
-            steps {
-
-                sh 'docker run -d --name app-container myapp || true'
 
             }
 
